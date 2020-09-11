@@ -4,6 +4,26 @@ import Character from './components/Character'
 import axios from 'axios'
 import { BASE_URL } from '../src/index'
 import styled from 'styled-components'
+
+//centering header text
+const StyledH1 = styled.h1 `
+  text-align: center;
+`
+//aligining the whole page to the center
+const StyledBody = styled.div `
+  width: 80%;
+  margin: 0 auto;
+`
+//making each component wrap and centered inside of the body
+const StyledComponent = styled.div `
+  display:flex;
+  flex-flow: row wrap;
+  /* margin: 10%; */
+  justify-content: space-around;
+
+  padding: 0px;
+`
+
 const App = () => {
 
   const [characters, setCharacters] = useState([])
@@ -26,19 +46,19 @@ const App = () => {
 
 
   return (
-    <div>
+    <StyledBody>
       <div className="App">
-        <h1 className="Header">Characters</h1>
+        <StyledH1 className="Header">Characters</StyledH1>
       </div>
 
-      <div>
+      <StyledComponent>
         {
           characters.map((info, i ) => (
             <Character key = {i} info = {info} />
           ))
         }
-      </div>
-    </div>
+      </StyledComponent>
+    </StyledBody>
   );
 }
 
